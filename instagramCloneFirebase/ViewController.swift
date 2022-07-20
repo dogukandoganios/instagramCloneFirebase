@@ -35,14 +35,14 @@ class ViewController: UIViewController {
         emailTextField.layer.borderWidth = 1
         emailTextField.layer.borderColor = UIColor.black.cgColor
         emailTextField.textAlignment = .center
-        emailTextField.frame = CGRect(x: width * 0.5 - width * 0.45 / 2, y: height * 0.25 - height * 0.05 / 2, width: width * 0.45, height: height * 0.05)
+        emailTextField.frame = CGRect(x: width * 0.5 - width * 0.65 / 2, y: height * 0.25 - height * 0.05 / 2, width: width * 0.65, height: height * 0.05)
         view.addSubview(emailTextField)
         
         passwordTextFiled.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray.withAlphaComponent(0.5)])
         passwordTextFiled.layer.borderWidth = 1
         passwordTextFiled.layer.borderColor = UIColor.black.cgColor
         passwordTextFiled.textAlignment = .center
-        passwordTextFiled.frame = CGRect(x: width * 0.5 - width * 0.45 / 2, y: height * 0.32 - height * 0.05 / 2, width: width * 0.45, height: height * 0.05)
+        passwordTextFiled.frame = CGRect(x: width * 0.5 - width * 0.65 / 2, y: height * 0.32 - height * 0.05 / 2, width: width * 0.65, height: height * 0.05)
         view.addSubview(passwordTextFiled)
         
         singinButton.setTitle("Sing In", for: UIControl.State.normal)
@@ -57,16 +57,66 @@ class ViewController: UIViewController {
         singupButton.addTarget(self, action: #selector(singupClick), for: UIControl.Event.touchUpInside)
         view.addSubview(singupButton)
         
-        
     }
     
     @objc func singinClick(){
         
-        performSegue(withIdentifier: "seagueSingIn", sender: nil)
+        if emailTextField.text != "" && passwordTextFiled.text != ""{
+            
+            Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextFiled.text!) { authdata, error in
+                
+                if error != nil{
+                    
+                    self.makeAlert(title: "Error", message: error!.localizedDescription)
+                    
+                }else{
+                    
+                    self.performSegue(withIdentifier: "seagueSingIn", sender: nil)
+                    
+                }
+                
+            }
+            
+        }else{
+            
+            self.makeAlert(title: "Error", message: "E-mail or password not nil!")
+            
+        }
         
     }
     
     @objc func singupClick(){
+        
+        if emailTextField.text != "" && passwordTextFiled.text != ""{
+            
+            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextFiled.text!) { authdata, error in
+                
+                if error != nil{
+                    
+                    self.makeAlert(title: "Error", message: error!.localizedDescription)
+                    
+                }else{
+                    
+                    self.performSegue(withIdentifier: "seagueSingIn", sender: nil)
+                    
+                }
+            }
+            
+        }else{
+            
+            makeAlert(title: "Error", message: "E-mail or password not nil!")
+            
+        }
+        
+        
+    }
+    
+    func makeAlert(title : String, message : String){
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
+        alert.addAction(okButton)
+        self.present(alert, animated: true, completion: nil)
         
     }
 

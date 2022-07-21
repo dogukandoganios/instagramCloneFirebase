@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6380775728896BAC00BC27BD /* feedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380775628896BAC00BC27BD /* feedTableViewCell.swift */; };
 		63BFB6B228882600003D35E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB6B128882600003D35E0 /* AppDelegate.swift */; };
 		63BFB6B428882600003D35E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB6B328882600003D35E0 /* SceneDelegate.swift */; };
 		63BFB6B628882600003D35E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB6B528882600003D35E0 /* ViewController.swift */; };
@@ -67,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6380775628896BAC00BC27BD /* feedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feedTableViewCell.swift; sourceTree = "<group>"; };
 		63BFB6AE28882600003D35E0 /* instagramCloneFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instagramCloneFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63BFB6B128882600003D35E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63BFB6B328882600003D35E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				63BFB6B328882600003D35E0 /* SceneDelegate.swift */,
 				63BFB6B528882600003D35E0 /* ViewController.swift */,
 				63BFB71C28883C20003D35E0 /* feedViewController.swift */,
+				6380775628896BAC00BC27BD /* feedTableViewCell.swift */,
 				63BFB71E28883C30003D35E0 /* uploadViewController.swift */,
 				63BFB72028883D2F003D35E0 /* settingsViewController.swift */,
 				63BFB6B728882600003D35E0 /* Main.storyboard */,
@@ -357,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6380775728896BAC00BC27BD /* feedTableViewCell.swift in Sources */,
 				63BFB6B628882600003D35E0 /* ViewController.swift in Sources */,
 				63BFB6B228882600003D35E0 /* AppDelegate.swift in Sources */,
 				63BFB71F28883C30003D35E0 /* uploadViewController.swift in Sources */,

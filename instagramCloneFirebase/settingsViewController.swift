@@ -30,10 +30,14 @@ class settingsViewController: UIViewController {
     @objc func logoutClick(){
         
         do{
+            
             try Auth.auth().signOut()
             performSegue(withIdentifier: "logoutSegue", sender: nil)
+            
         }catch{
+            
             print("error")
+            
         }
         
     }

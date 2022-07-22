@@ -73,8 +73,6 @@ class feedViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                 }else{
                     
-                    
-                    
                 }
                 
             }
@@ -88,6 +86,7 @@ class feedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let okButton = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil)
         alert.addAction(okButton)
         self.present(alert, animated: true, completion: nil)
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

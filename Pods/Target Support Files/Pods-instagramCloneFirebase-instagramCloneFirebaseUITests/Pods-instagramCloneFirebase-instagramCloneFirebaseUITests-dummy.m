@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_instagramCloneFirebase_instagramCloneFirebaseUITests : NSObject
+@end
+@implementation PodsDummy_Pods_instagramCloneFirebase_instagramCloneFirebaseUITests
+@end

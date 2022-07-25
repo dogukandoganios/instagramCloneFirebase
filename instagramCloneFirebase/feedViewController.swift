@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 class feedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -31,13 +32,18 @@ class feedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let fireStoreDataBase = Firestore.firestore()
         
-        fireStoreDataBase.collection("Posts").addSnapshotListener { snapshot, error in
+        fireStoreDataBase.collection("Posts").order(by: "postDate", descending: true).addSnapshotListener { snapshot, error in
             
             if error != nil{
                 
                 self.alert(title: "Error", message: error!.localizedDescription)
                 
             }else{
+                
+                self.postedByArray.removeAll(keepingCapacity: false)
+                self.postedCommentArray.removeAll(keepingCapacity: false)
+                self.likesArray.removeAll(keepingCapacity: false)
+                self.imagesArray.removeAll(keepingCapacity: false)
                 
                 if snapshot?.isEmpty != true{
                     
@@ -92,7 +98,8 @@ class feedViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! feedTableViewCell
-        cell.postImage.image = UIImage(named: "selectimage")
+        cell.postImage.sd_setImage(with: URL(string: imagesArray[indexPath.row]))
+        print(imagesArray[indexPath.row])
         cell.emailLabel.text = postedByArray[indexPath.row]
         cell.commentLabel.text = postedCommentArray[indexPath.row]
         cell.likeLabel.text = String(likesArray[indexPath.row])

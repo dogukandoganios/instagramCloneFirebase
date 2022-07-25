@@ -28,7 +28,25 @@
 		<key>instagramCloneFirebase.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>30</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>63BFB6AD28882600003D35E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>63BFB6C328882606003D35E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>63BFB6CD28882606003D35E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

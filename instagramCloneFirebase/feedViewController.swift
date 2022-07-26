@@ -7,7 +7,7 @@
 
 import UIKit
 import Firebase
-import SDWebImage
+//import SDWebImage
 
 class feedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -16,6 +16,7 @@ class feedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var postedCommentArray = [String]()
     var likesArray = [Int]()
     var imagesArray = [String]()
+    var documentID = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +45,14 @@ class feedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.postedCommentArray.removeAll(keepingCapacity: false)
                 self.likesArray.removeAll(keepingCapacity: false)
                 self.imagesArray.removeAll(keepingCapacity: false)
+                self.documentID.removeAll(keepingCapacity: false)
                 
                 if snapshot?.isEmpty != true{
                     
                     for document in snapshot!.documents {
+                        
+                        let documentID = document.documentID
+                        self.documentID.append(documentID)
                         
                         if let postedBy = document.get("postedBy") as? String{
                             
@@ -98,11 +103,15 @@ class feedViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! feedTableViewCell
-        cell.postImage.sd_setImage(with: URL(string: imagesArray[indexPath.row]))
-        print(imagesArray[indexPath.row])
+        //cell.postImage.image = UIImage(named: "selectimage")
+        let url = URL(string: imagesArray[indexPath.row])
+        if let data = try? Data(contentsOf: url!){
+            cell.postImage.image = UIImage(data: data)
+        }
         cell.emailLabel.text = postedByArray[indexPath.row]
         cell.commentLabel.text = postedCommentArray[indexPath.row]
         cell.likeLabel.text = String(likesArray[indexPath.row])
+        cell.documentId.text = self.documentID[indexPath.row]
         return cell
         
     }

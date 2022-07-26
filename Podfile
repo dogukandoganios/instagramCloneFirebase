@@ -11,6 +11,7 @@ pod 'Firebase/Core'
 pod 'Firebase/Firestore'
 pod 'Firebase/Storage'
 pod 'SDWebImage'
+pod 'Kingfisher'
 
   # Pods for instagramCloneFirebase
 
